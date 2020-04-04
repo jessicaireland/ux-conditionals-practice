@@ -22,7 +22,7 @@
 */
 function getColor(number) {
     // Uncomment and complete
-    return /* ( Your code Here ) ?  Your code Here  :  Your code Here */;
+    return  (number > 10) ? "blue" : "red" ;
 }
 
 /* 
@@ -50,7 +50,7 @@ console.log(getColor(10) === "red");
     if the brightness is greater than or equal to 200, then return "on"
 */
 function lightStatus(brightness) {
-    return /* Put both ternary statements here, in one line */;
+    return (brightness >= 200) ? "on" : (brightness > 0) ? "dimmed" : "off";
 }
 
 /* 
@@ -86,15 +86,34 @@ console.log(lightStatus(255) === "on");
 */
 
 function getLightBulbStatusDisplayString(status) {
-    let result = "";
-    /* uncomment and complete
-    switch( your code here ) {
-      case "your code here": 
-        your code here;
+    let result = ""
+   
+    switch (status) {
+      case "on": 
+        console.log("The house is bright");
         break;
-      etc...
+      case "off":
+        console.log("The house is dark");
+        break;
+      case "dimmed":
+        console.log("The house is nice and dim");
+        break;
+      case "offline":
+      case "missing":
+         console.log("The house is dark and we can't find the lightbulb!");
+         break;
+       case "deleted":
+         console.log("The lightbulb has been removed from the system");
+         break; 
+       case "broken":
+         console.log("The house is dark and we can't turn the light on!");
+         break;
+       default:
+           console.log("Something is wrong!");
+           break;
+
     }
-    */
+    
     return result;
 }
 
@@ -209,6 +228,39 @@ function updateLights(somebodyIsHome, theyAreWatchingTV, itIsDarkOutside, theyAr
     // example of turning off a light
     turnOffLight("livingRoomLight");
 }
+
+
+if (itIsDarkOutside){
+    turnOnLight("frontPorchLight");
+} else{
+    turnOffLight("frontPorchLight");
+}
+if (!somebodyIsHome) {
+    turnOffLight("livingRoomLight");
+    turnOffLight("diningRoomLIght");
+    turnOffLight("kitchenLight");
+    turnOffLight("bedroomLight");
+}
+
+if (somebodyIsHome && !theyWentToBed){
+    turnOnLight("livingRoomLight");
+    turnOnLight("diningRoomLight");
+}
+
+if (theyAreCooking){
+    turnOnLight("kitchenLight");
+} else if (theyAreWatchingTV){
+    turnOffLight("livingRoomLIght")
+    turnOffLight("diningRoomLight");
+}
+
+if (theyWentToBed) {
+    turnOnLight("bedroomLight");
+}
+
+
+
+
 
 /* 
    -------TESTS---------------------------------------------------------------
